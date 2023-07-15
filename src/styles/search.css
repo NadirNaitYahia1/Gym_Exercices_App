@@ -1,0 +1,19 @@
+.title5{
+    font-size: 44px;
+    font-weight: 700; 
+}
+.title5resize{
+    font-size: 25px !important;
+    font-weight: 700; 
+}
+.input1{
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+    border-radius: 3px;
+
+}
+.btn{
+    text-transform: none;
+}

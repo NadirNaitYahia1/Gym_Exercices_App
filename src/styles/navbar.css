@@ -1,0 +1,15 @@
+.nav{
+    /* border: solid 1px red; */
+}
+.logo_img{
+    height: 48px;
+    width: 48px;
+}
+.titre > *{
+    color:#3A1212 !important;
+    
+    font-size: 20px; 
+}
+.home{
+    border-bottom: 3px solid #ff2625;
+}

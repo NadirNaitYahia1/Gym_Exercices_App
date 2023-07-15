@@ -1,0 +1,47 @@
+ 
+.title1{
+    color: #ff2625;
+    font-weight: 600;
+    font-size: 40px;
+}
+.text{
+    /* border: 1px solid red; */
+ 
+}
+
+.title2{
+     font-size: 30px;
+     font-weight: 700;
+}  
+.title3{
+    font-size: 22px;
+   
+
+}
+
+.title4{
+    font-size: 190px;
+    font-weight: 600;
+    color: #ff2625;
+    opacity: 0.1;
+}
+.btn{
+    background-color: #ff2625;
+    color: white;
+
+}
+.img{
+ 
+    /* border: 5px solid #118d21; */
+    padding: 0px;
+}
+.banner_img{
+    /* border: 2px solid #ff2625; */
+    width: 100%;
+    height: 100%;
+    image-resolution: 300dpi;
+    margin: 0px;
+    border-radius: 10px;
+  
+}
+ 
