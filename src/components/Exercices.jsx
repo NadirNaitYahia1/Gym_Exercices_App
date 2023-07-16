@@ -2,7 +2,15 @@ import React from 'react'
 
 const Exercices = () => {
   return (
-    <div>Exercices</div>
+    <div className='container-fluid'>
+      <div className="row">
+        <div className="col-12">
+          
+        </div>
+
+
+      </div>
+    </div>
   )
 }
 
