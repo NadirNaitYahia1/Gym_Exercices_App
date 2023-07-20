@@ -5,7 +5,7 @@ import { useState,useEffect } from 'react';
 import { exerciseOptions, fetchData } from '../utils/fetchData';
 import Card from 'react-bootstrap/Card';
 import badyPart_img from '../assets/icons/gym.png';
-import {ScrollMenu} from 'react-horizontal-scrolling-menu';
+ 
 import Carousel from 'react-bootstrap/Carousel';
 
 
@@ -13,6 +13,7 @@ const SearchExercices = () => {
   const [width, setWidth] = useState(false);
   const [search, setSearch] = useState('');
   const [bodyPartList, setBodyPartList] = useState([]);
+ 
 
 
 
@@ -31,15 +32,17 @@ const SearchExercices = () => {
           )
           console.log(searchedExercices);
   }}
+
+
   useEffect(() => {
-    const data = async () => {
-      const bodyPartData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
-      setBodyPartList(['all',...bodyPartData]);
-      console.log(bodyPartList);
-    }
-    data();
- 
-  }, [])
+    const fetchExercisesData = async () => {
+      const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
+      console.log(bodyPartsData);
+      setBodyPartList(['all',...bodyPartsData]);
+    };
+
+    fetchExercisesData();
+  }, []);
 
 
   useEffect(() => {
@@ -70,36 +73,18 @@ const SearchExercices = () => {
 
           <div className="bodyPartList col-12 mt-5  mb-3 ">
        <div className="d-flex col-12">
-       <Carousel data-bs-theme="dark  ">
-  <Carousel.Item>
-    
+       <Carousel >
+    <Carousel.Item  >
       {console.log(bodyPartList)}
-      {bodyPartList.map((bodyPart, index) => (
-        <Card className="col-3" key={index}>
-          <Card.Img variant="top" src={badyPart_img} className="img-fluid" />
-          <Card.Body>
-            <Card.Text className="text-center">{bodyPart}</Card.Text>
-          </Card.Body>
-        </Card>
-      ))}
-   
-  </Carousel.Item>
-
-  <Carousel.Item>
-    
-    {console.log(bodyPartList)}
-    {bodyPartList.map((bodyPart, index) => (
-      <Card className="col-3" key={index}>
+  {bodyPartList.map((bodyPart, index) => (
+      <Card className="col-3">
         <Card.Img variant="top" src={badyPart_img} className="img-fluid" />
         <Card.Body>
           <Card.Text className="text-center">{bodyPart}</Card.Text>
         </Card.Body>
       </Card>
-    ))}
- 
-</Carousel.Item>
-
-
+      ))}
+    </Carousel.Item>
 </Carousel>
         
         

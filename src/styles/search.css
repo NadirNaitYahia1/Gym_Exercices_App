@@ -17,3 +17,10 @@
 .btn{
     text-transform: none;
 }
+.img-fluid{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #f4ff;
+}
