@@ -1,5 +1,5 @@
 import React from 'react'
-import '../bootstrap-5.1.3-dist/css/bootstrap.css';
+import '../bootstrap-5.1.3-dist/css/bootstrap.css'; 
 import '../styles/search.css'
 import { useState,useEffect } from 'react';
 import { exerciseOptions, fetchData } from '../utils/fetchData';
@@ -13,7 +13,9 @@ const SearchExercices = () => {
   const [width, setWidth] = useState(false);
   const [search, setSearch] = useState('');
   const [bodyPartList, setBodyPartList] = useState([]);
- 
+  const [click, setClick] = useState(0);
+  const [item, setItem] = useState(1);
+ const time = 100000000000000000000;
 
 
 
@@ -36,9 +38,10 @@ const SearchExercices = () => {
 
   useEffect(() => {
     const fetchExercisesData = async () => {
-      const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
-      console.log(bodyPartsData);
-      setBodyPartList(['all',...bodyPartsData]);
+      // const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
+  
+  
+      setBodyPartList(['all',"back","cardio","chest","lower arms","lower legs","neck","shoulders","upper arms","upper legs","waist"]);
     };
 
     fetchExercisesData();
@@ -53,6 +56,11 @@ const SearchExercices = () => {
       // window.location.href = window.location.href;
     }
   }, []);
+  
+  const Click = (index,nb)=>{
+     setClick(index) 
+     setItem(nb)
+  }
 
 
 
@@ -71,21 +79,50 @@ const SearchExercices = () => {
           </div>
 
 
-          <div className="bodyPartList col-12 mt-5  mb-3 ">
-       <div className="d-flex col-12">
-       <Carousel >
-    <Carousel.Item  >
-      {console.log(bodyPartList)}
-  {bodyPartList.map((bodyPart, index) => (
-      <Card className="col-3">
-        <Card.Img variant="top" src={badyPart_img} className="img-fluid" />
+          <div className="bodyPartList col-12 mt-5  mb-3  ">
+       <div className="  col-12 ms-auto">
+ 
+  <Carousel data-bs-theme="black" fade interval={time}>
+
+      <Carousel.Item className='d-flex col-12 justify-content-center mb-5'  >
+        {bodyPartList.slice(0, 4).map((bodyPart, index) => (
+          <Card className={(index===click) && (1===item) ?" clicked col-3":" notclicked  col-3"} key={index}    onClick={()=>Click(index,1)}>
+          <Card.Img variant="top" src={badyPart_img} className="img-fluid img"  />
+            <Card.Body>
+              <Card.Text className="bodyPart_name text-center">{bodyPart}</Card.Text>
+            </Card.Body>
+          </Card>))}
+        </Carousel.Item>
+ 
+      <Carousel.Item className='d-flex col-12 justify-content-center mb-5'>
+      {bodyPartList.slice(4, 8).map((bodyPart, index) => (
+          <Card className={(index===click) && (2===item) ?" clicked col-3":" notclicked  col-3"} key={index}    onClick={()=>Click(index,2)}>
+        <Card.Img variant="top" src={badyPart_img} className="img-fluid img" />
         <Card.Body>
-          <Card.Text className="text-center">{bodyPart}</Card.Text>
+          <Card.Text className="bodyPart_name text-center">{bodyPart}</Card.Text>
         </Card.Body>
       </Card>
-      ))}
-    </Carousel.Item>
-</Carousel>
+    ))}
+      </Carousel.Item>
+ 
+
+
+
+ 
+      <Carousel.Item className='d-flex col-12 justify-content-center mb-5'  >
+      {bodyPartList.slice(8, bodyPartList.length).map((bodyPart, index) => (
+          <Card className={(index===click) && (3===item) ?" clicked col-3":" notclicked  col-3"} key={index}    onClick={()=>Click(index,3)}>
+        <Card.Img variant="top" src={badyPart_img} className="img-fluid img" />
+        <Card.Body>
+          <Card.Text className="bodyPart_name text-center">{bodyPart}</Card.Text>
+        </Card.Body>
+      </Card>
+    ))} 
+      </Carousel.Item>
+  
+    </Carousel>
+
+ 
         
         
         

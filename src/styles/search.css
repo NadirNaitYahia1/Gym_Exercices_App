@@ -20,7 +20,27 @@
 .img-fluid{
     height: 40px;
     width: 40px;
+ 
+}
+.nadir{
+    /* border: 2px solid #000; */
+}
+.img{
+    /* border: 2px solid #000; */
     display: flex;
-    justify-content: center;
-    border: 2px solid #f4ff;
+    align-self: center;
+}
+.bodyPart_name{
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    text-transform: capitalize;
+} 
+.clicked{
+    border-top: 3px solid #e12222;
+    transform: translate(0px, 3px);
+
+}
+.notclicked{
+    /* border-top: 3px solid #000; */
 }
