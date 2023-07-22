@@ -96,7 +96,7 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
  
       <Carousel.Item className='d-flex col-12 justify-content-center mb-5'>
       {bodyPartList.slice(4, 8).map((bodyPart, index) => (
-          <Card className={(index===click) && (2===item) ?" clicked col-3 ms-2":" notclicked  col-3 ms-2"} key={index}    onClick={()=>Click(index,2)}>
+          <Card className={(index===click) && (2===item) ?" clicked col-3 ms-2":" notclicked  col-3 ms-2"} key={index}    onClick={()=>Click(index,2,bodyPart)}>
         <Card.Img variant="top" src={badyPart_img} className="img-fluid img mt-3 mb-2" />
         <Card.Body>
           <Card.Text className="bodyPart_name text-center">{bodyPart}</Card.Text>
@@ -111,7 +111,7 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
  
       <Carousel.Item className='d-flex col-12 justify-content-center mb-5'  >
       {bodyPartList.slice(8, bodyPartList.length).map((bodyPart, index) => (
-          <Card className={(index===click) && (3===item) ?" clicked col-3 ms-2":" notclicked  col-3 ms-2"} key={index}    onClick={()=>Click(index,3)}>
+          <Card className={(index===click) && (3===item) ?" clicked col-3 ms-2":" notclicked  col-3 ms-2"} key={index}    onClick={()=>Click(index,3,bodyPart)}>
         <Card.Img variant="top" src={badyPart_img} className="img-fluid img mt-3 mb-2" />
         <Card.Body>
           <Card.Text className="bodyPart_name text-center">{bodyPart}</Card.Text>
