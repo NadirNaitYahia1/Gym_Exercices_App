@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../bootstrap-5.1.3-dist/css/bootstrap.css';
 import '../styles/home.css'
 import HeroBanner from '../components/HeroBanner';
@@ -10,12 +10,15 @@ const Home = () => {
   
   const [search, setSearch] = useState('');
   const [bodyPartList, setBodyPartList] = useState([]);
-  
+  const [exercices, setExercices] = useState([]);
+  useEffect(() => {console.log('From Home Exercices :',exercices)}, []);
+
+
   return (
   <div className="col-12">
     <HeroBanner />
-    <SearchExercices search={search} setSearch={setSearch} bodyPartList={bodyPartList} setBodyPartList={setBodyPartList} />
-    <Exercices />
+    <SearchExercices search={search} setSearch={setSearch} bodyPartList={bodyPartList} setBodyPartList={setBodyPartList} exercices={exercices} setExercices={setExercices} />
+    <Exercices exercices={exercices} setExercices={setExercices} search={search} />
  
   </div>
   )

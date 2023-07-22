@@ -9,12 +9,12 @@ import badyPart_img from '../assets/icons/gym.png';
 import Carousel from 'react-bootstrap/Carousel';
 
 
-const SearchExercices = () => {
+const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exercices,setExercices}) => {
   const [width, setWidth] = useState(false);
-  const [search, setSearch] = useState('');
-  const [bodyPartList, setBodyPartList] = useState([]);
+  // const [search, setSearch] = useState('');
+  // const [bodyPartList, setBodyPartList] = useState([]);
   const [click, setClick] = useState(0);
-  const [item, setItem] = useState(1);
+  const [item, setItem] = useState(-1);
  const time = 100000000000000000000;
 
 
@@ -23,8 +23,10 @@ const SearchExercices = () => {
 
 
   const handlSearch = async() => {
-    if(search){
-        const exercicesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
+    let url = 'https://exercisedb.p.rapidapi.com/exercises'
+    if(search){ 
+
+        const exercicesData = await fetchData(url, exerciseOptions);
         const searchedExercices = exercicesData.filter(
           (exercice) => 
             exercice.name.toLowerCase().includes(search)
@@ -32,7 +34,10 @@ const SearchExercices = () => {
           || exercice.equipment.toLowerCase().includes(search)
           || exercice.bodyPart.toLowerCase().includes(search)
           )
-          console.log(searchedExercices);
+          // console.log(searchedExercices);
+          setExercices(searchedExercices);
+          console.log('From SearchExercices Exercices :',exercices);
+          setSearch('');
   }}
 
 
@@ -57,9 +62,12 @@ const SearchExercices = () => {
     }
   }, []);
   
-  const Click = (index,nb)=>{
+  const Click = (index,nb,bodyPart)=>{
      setClick(index) 
      setItem(nb)
+     setSearch(bodyPart)
+     handlSearch()
+
   }
 
 
@@ -86,7 +94,7 @@ const SearchExercices = () => {
 
       <Carousel.Item className='d-flex col-12 justify-content-center mb-5'  >
         {bodyPartList.slice(0, 4).map((bodyPart, index) => (
-          <Card className={(index===click) && (1===item) ?" clicked col-3":" notclicked  col-3"} key={index}    onClick={()=>Click(index,1)}>
+          <Card className={(index===click) && (1===item) ?" clicked col-3":" notclicked  col-3"} key={index}    onClick={()=>Click(index,1,bodyPart)}>
           <Card.Img variant="top" src={badyPart_img} className="img-fluid img"  />
             <Card.Body>
               <Card.Text className="bodyPart_name text-center">{bodyPart}</Card.Text>
