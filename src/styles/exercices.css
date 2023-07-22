@@ -20,3 +20,25 @@
     font-size: 34px;
     font-weight:450px; 
 }
+.btn_exercices1{
+    border-radius: 20px;
+    text-transform: capitalize;
+    background-color: #ffa9a9;
+    color: #fff;
+    font-size: 16px;
+ 
+}
+.btn_exercices2{
+    color: #000;
+    background-color: #fcc757;
+    font-weight:500;
+    text-transform: capitalize;
+    font-size: 14px;
+    border-radius: 20px;
+}
+.bodyPart_name{
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    text-transform: capitalize;
+}

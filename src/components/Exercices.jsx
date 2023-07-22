@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import '../styles/exercices.css'
 const Exercices = ( {exercices , setExercices ,search,width} ) => {
-  let n =[   
+  const n =[   
     {bodyPart: 'back', equipment: 'cable', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/Sh6IYw90gxaURZ', id: '0007', name: 'alternate lateral pulldown'} ,
      
     {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/-6x11b6BmixQXx', id: '3293', name: 'archer pull up'} ,
@@ -77,12 +77,20 @@ const Exercices = ( {exercices , setExercices ,search,width} ) => {
 </div>
 
 
-        {n.map((exercice, index) => (
+        {exercices.map((exercice, index) => (
          
             <Card   key={index} className="col-3 mb-5 card_border  ms-5 mt-4">
             <Card.Img variant="top" src={exercice.gifUrl} className="img-fluid img_exercices justify-content-center mt-4"  />
-              <Card.Body>
-                <Card.Text className="bodyPart_name text-center">bodyPart:{exercice.bodyPart}</Card.Text>
+              <Card.Body  className='mt-3'>
+
+                <div className="text flex ">
+                <button className=" btn_exercices1 text-center ms-2">{exercice.bodyPart}</button>
+                <button className='btn_exercices2 text-center ms-5'>{exercice.target}</button>
+                </div>
+                <Card.Text className="bodyPart_name text-center mt-4">{exercice.name}</Card.Text>
+          
+
+
               </Card.Body>
             </Card>
   
