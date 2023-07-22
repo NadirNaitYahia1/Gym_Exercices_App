@@ -11,14 +11,22 @@ const Home = () => {
   const [search, setSearch] = useState('');
   const [bodyPartList, setBodyPartList] = useState([]);
   const [exercices, setExercices] = useState([]);
+  const [width, setWidth] = useState(false);
   useEffect(() => {console.log('From Home Exercices :',exercices)}, []);
-
+  useEffect(() => {
+    if (window.innerWidth < 992) {
+      setWidth(true);
+      console.log(window.location.href);
+      // window.location.reload();
+      // window.location.href = window.location.href;
+    }
+  }, []);
 
   return (
   <div className="col-12">
     <HeroBanner />
-    <SearchExercices search={search} setSearch={setSearch} bodyPartList={bodyPartList} setBodyPartList={setBodyPartList} exercices={exercices} setExercices={setExercices} />
-    <Exercices exercices={exercices} setExercices={setExercices} search={search} />
+    <SearchExercices search={search} setSearch={setSearch} bodyPartList={bodyPartList} setBodyPartList={setBodyPartList} exercices={exercices} setExercices={setExercices} width={width} />
+    <Exercices exercices={exercices} setExercices={setExercices} search={search}  width={width}/>
  
   </div>
   )

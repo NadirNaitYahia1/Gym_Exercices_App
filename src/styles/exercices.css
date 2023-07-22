@@ -1,9 +1,22 @@
 .img_exercices{
-    height: 250px;
-    width: 250px;
+  
+    height: 200px;
+    width: 200px;
     display: flex;  
     align-items: center;
     align-self: center; 
  
 
+}
+.card_border{
+    border-top: 4px solid #c11f1f !important;
+}
+.exercices{
+    align-items: center;
+    justify-content: center;
+    
+}
+.title6{
+    font-size: 34px;
+    font-weight:450px; 
 }
