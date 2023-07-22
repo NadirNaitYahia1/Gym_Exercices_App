@@ -2,6 +2,7 @@ import React from 'react'
 import '../bootstrap-5.1.3-dist/css/bootstrap.css';
 import { useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
+import Pagination from 'react-bootstrap/Pagination';
 import '../styles/exercices.css'
 const Exercices = ( {exercices , setExercices ,search,width} ) => {
   const n =[   
@@ -77,9 +78,9 @@ const Exercices = ( {exercices , setExercices ,search,width} ) => {
 </div>
 
 
-        {exercices.map((exercice, index) => (
+        {n.map((exercice, index) => (
          
-            <Card   key={index} className="col-3 mb-5 card_border  ms-5 mt-4">
+            <Card   key={index} className="col-lg-3 col-md-3 col-12 mb-5 card_border  ms-5 mt-4">
             <Card.Img variant="top" src={exercice.gifUrl} className="img-fluid img_exercices justify-content-center mt-4"  />
               <Card.Body  className='mt-3'>
 
@@ -94,10 +95,23 @@ const Exercices = ( {exercices , setExercices ,search,width} ) => {
               </Card.Body>
             </Card>
   
+
           
 ))}
-         
+{(n.length>9) &&
+<Pagination className='d-flex justify-content-center'>
+{/* <Pagination.First />
+<Pagination.Prev />
+<Pagination.Item>{1}</Pagination.Item> */}
 
+{Array.from({ length: (n.length /9) }).map((_, index) => (
+  <Pagination.Item  >
+    {index + 1}
+  </Pagination.Item>
+))}
+</Pagination>
+
+}
         </div>
 
 

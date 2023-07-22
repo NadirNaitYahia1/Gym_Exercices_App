@@ -55,6 +55,7 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
  
   
   const Click = (index,nb,bodyPart)=>{
+    
      setClick(index) 
      setItem(nb)
      setSearch(bodyPart)
