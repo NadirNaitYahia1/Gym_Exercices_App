@@ -44,3 +44,9 @@
 .notclicked{
     /* border-top: 3px solid #000; */
 }
+.carousel_item {
+ 
+   cursor: pointer;
+ 
+
+}

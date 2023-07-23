@@ -23,6 +23,7 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
 
   const handlSearch = async() => {
     let url = 'https://exercisedb.p.rapidapi.com/exercises'
+    // window.scrollTo({top:1800,behavior:'smooth'} );
     if(search){ 
     
 
@@ -34,8 +35,8 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
           || exercice.equipment.toLowerCase().includes(search)
           || exercice.bodyPart.toLowerCase().includes(search)
           )
-          // console.log(searchedExercices);
           setExercices(searchedExercices);
+          // console.log(searchedExercices);
           console.log('From SearchExercices Exercices :',exercices);
           setSearch('');
   }}
@@ -91,9 +92,9 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
  
   <Carousel data-bs-theme="black" fade interval={time}  >
 
-      <Carousel.Item className='d-flex col-12 justify-content-center mb-5 '   >
+      <Carousel.Item className='d-flex col-12 justify-content-center mb-5  '   >
         {bodyPartList.slice(0, 3).map((bodyPart, index) => (
-          <Card className={(index===click) && (1===item) ?" clicked col-3 ms-2":" notclicked  col-3 ms-2"} key={index}    onClick={()=>Click(index,1,bodyPart)}>
+          <Card className={(index===click) && (1===item) ?" clicked col-3 ms-2  carousel_item":" notclicked  col-3 ms-2  carousel_item"} key={index}    onClick={()=>Click(index,1,bodyPart)}>
           <Card.Img variant="top" src={badyPart_img} className="img-fluid img mt-3 mb-2"  />
             <Card.Body>
               <Card.Text className="bodyPart_name text-center">{bodyPart}</Card.Text>
@@ -101,9 +102,9 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
           </Card>))}
         </Carousel.Item>
  
-      <Carousel.Item className='d-flex col-12 justify-content-center mb-5'>
+      <Carousel.Item className='d-flex col-12 justify-content-center mb-5  '>
       {bodyPartList.slice(4, 7).map((bodyPart, index) => (
-          <Card className={(index===click) && (2===item) ?" clicked col-3 ms-2":" notclicked  col-3 ms-2"} key={index}    onClick={()=>Click(index,2,bodyPart)}>
+          <Card className={(index===click) && (2===item) ?" clicked col-3 ms-2 carousel_item":" notclicked  col-3 ms-2 carousel_item"} key={index}    onClick={()=>Click(index,2,bodyPart)}>
         <Card.Img variant="top" src={badyPart_img} className="img-fluid img mt-3 mb-2" />
         <Card.Body>
           <Card.Text className="bodyPart_name text-center">{bodyPart}</Card.Text>
@@ -116,9 +117,9 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
 
 
  
-      <Carousel.Item className='d-flex col-12 justify-content-center mb-5'  >
+      <Carousel.Item className='d-flex col-12 justify-content-center mb-5  '  >
       {bodyPartList.slice(8, bodyPartList.length).map((bodyPart, index) => (
-          <Card className={(index===click) && (3===item) ?" clicked col-3 ms-2":" notclicked  col-3 ms-2"} key={index}    onClick={()=>Click(index,3,bodyPart)}>
+          <Card className={(index===click) && (3===item) ?" clicked col-3 ms-2 carousel_item":" notclicked  col-3 ms-2 carousel_item"} key={index}    onClick={()=>Click(index,3,bodyPart)}>
         <Card.Img variant="top" src={badyPart_img} className="img-fluid img mt-3 mb-2" />
         <Card.Body>
           <Card.Text className="bodyPart_name text-center">{bodyPart}</Card.Text>

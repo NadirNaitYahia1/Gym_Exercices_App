@@ -343,7 +343,7 @@ const Exercices = ( {exercices , setExercices ,search,width ,first , end , setFi
 
         {exercices.slice(first, end).map((exercice, index) => (
          
-            <Card   key={index} className={width ? "col-lg-3 col-md-3 col-12 mb-5 card_border   ms-4 mt-4":"col-lg-3 col-md-3 col-12 mb-5 card_border  ms-5 mt-4"}>
+            <Card   key={index} className={width ? " cards_item col-lg-3 col-md-3 col-11 mb-5 card_border   ms-4 mt-4":"cards_item col-lg-3 col-md-3 col-12 mb-5 card_border  ms-4 mt-4"}>
             <Card.Img variant="top" src={exercice.gifUrl} className="img-fluid img_exercices justify-content-center mt-4"  />
               <Card.Body  className='mt-3'>
 
@@ -351,7 +351,7 @@ const Exercices = ( {exercices , setExercices ,search,width ,first , end , setFi
                 <button className=" btn_exercices1 text-center ms-2">{exercice.bodyPart}</button>
                 <button className='btn_exercices2 text-center ms-5'>{exercice.target}</button>
                 </div>
-                <Card.Text className="bodyPart_name text-center mt-4 ">{exercice.name}</Card.Text>
+                <Card.Text className="bodyPart_name   mt-4 ">{exercice.name}</Card.Text>
           
 
 

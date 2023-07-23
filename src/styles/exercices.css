@@ -37,7 +37,7 @@
     border-radius: 20px;
 }
 .bodyPart_name{
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 500;
     color: #000;
     text-transform: capitalize; 
@@ -51,6 +51,12 @@
     align-self: center;
     margin: 0px;
     align-content: center;
+}
+.cards_item:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+   cursor: pointer;
+
 }
 
 /* Wave text loader made by: csozi | Website: english.csozi.hu*/
