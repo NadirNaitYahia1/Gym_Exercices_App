@@ -39,6 +39,7 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
           // console.log(searchedExercices);
           console.log('From SearchExercices Exercices :',exercices);
           setSearch('');
+          // window.scrollTo({top:20,behavior:'smooth'} );
   }}
 
 
@@ -77,7 +78,7 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
     <div className="container-fluid mt-5">
       <div className="row  ">
         <div className="col-12">
-          <p className={width ? 'title5resize text-center mt-5 mb-5': 'title5 text-center mt-5   ' }>Awesome Exercices You <br /> Should Know</p>
+          <p className={width <992 ? 'title5resize text-center mt-5 mb-5': 'title5 text-center mt-5   ' }>Awesome Exercices You <br /> Should Know</p>
           <div className="input col-12  d-flex justify-content-center mb-5">
             <input type="text" placeholder='Search Exercices' className='input1 col-lg-8 col-md-8 col-7 p-2' onChange={(e)=>{setSearch(e.target.value.toLowerCase())}} />
             {/* {console.log(search)} */}
