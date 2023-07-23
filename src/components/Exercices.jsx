@@ -1,10 +1,11 @@
 import React from 'react'
 import '../bootstrap-5.1.3-dist/css/bootstrap.css';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Pagination from 'react-bootstrap/Pagination';
 import '../styles/exercices.css'
-const Exercices = ( {exercices , setExercices ,search,width} ) => {
+import { click } from '@testing-library/user-event/dist/click';
+const Exercices = ( {exercices , setExercices ,search,width ,first , end , setFirst , setEnd} ) => {
   const n =[   
     {bodyPart: 'back', equipment: 'cable', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/Sh6IYw90gxaURZ', id: '0007', name: 'alternate lateral pulldown'} ,
      
@@ -67,6 +68,14 @@ const Exercices = ( {exercices , setExercices ,search,width} ) => {
     {bodyPart: 'back', equipment: 'barbell', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/dVPvhYCgeL4mpd', id: '0064', name: 'barbell one arm bent over row'} 
     
     ]
+
+    const [active, setActive] = useState(1);
+
+    const click = (index) => () => {
+      setFirst(index);
+      setEnd(index+9);
+      setActive(index);
+    }
  
   return (
     <div className='container-fluid'>
@@ -78,7 +87,7 @@ const Exercices = ( {exercices , setExercices ,search,width} ) => {
 </div>
 
 
-        {n.map((exercice, index) => (
+        {n.slice(first, end).map((exercice, index) => (
          
             <Card   key={index} className="col-lg-3 col-md-3 col-12 mb-5 card_border  ms-5 mt-4">
             <Card.Img variant="top" src={exercice.gifUrl} className="img-fluid img_exercices justify-content-center mt-4"  />
@@ -98,20 +107,22 @@ const Exercices = ( {exercices , setExercices ,search,width} ) => {
 
           
 ))}
+
 {(n.length>9) &&
-<Pagination className='d-flex justify-content-center'>
+<Pagination className='d-flex justify-content-center mb-5 mt-2'>
 {/* <Pagination.First />
 <Pagination.Prev />
 <Pagination.Item>{1}</Pagination.Item> */}
 
 {Array.from({ length: (n.length /9) }).map((_, index) => (
-  <Pagination.Item  >
+  <Pagination.Item onClick={click(index+1)}  className={(active===index+1) ? 'active' :'none'} >
     {index + 1}
   </Pagination.Item>
 ))}
 </Pagination>
 
 }
+
         </div>
 
 

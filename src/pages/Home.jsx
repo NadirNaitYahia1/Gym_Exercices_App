@@ -11,6 +11,8 @@ const Home = () => {
   const [search, setSearch] = useState('');
   const [bodyPartList, setBodyPartList] = useState([]);
   const [exercices, setExercices] = useState([]);
+  const [first, setFirst] = useState(1);
+  const [end, setEnd] = useState(10);
   const [width, setWidth] = useState(false);
   useEffect(() => {console.log('From Home Exercices :',exercices)}, []);
   useEffect(() => {
@@ -26,7 +28,7 @@ const Home = () => {
   <div className="col-12">
     <HeroBanner />
     <SearchExercices search={search} setSearch={setSearch} bodyPartList={bodyPartList} setBodyPartList={setBodyPartList} exercices={exercices} setExercices={setExercices} width={width} />
-    <Exercices exercices={exercices} setExercices={setExercices} search={search}  width={width}/>
+    <Exercices exercices={exercices} setExercices={setExercices} search={search}  width={width} first={first} end={end} setFirst={setFirst} setEnd={setEnd}/>
  
   </div>
   )
