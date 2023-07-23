@@ -4,8 +4,8 @@ import { useEffect,useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Pagination from 'react-bootstrap/Pagination';
 import '../styles/exercices.css'
-import { click } from '@testing-library/user-event/dist/click';
-const Exercices = ( {exercices , setExercices ,search,width ,first , end , setFirst , setEnd} ) => {
+import img1 from '../assets/images/test.svg'
+const Exercices = ( {exercices , setExercices ,search,width ,first , end , setFirst , setEnd, clicked, setClicked} ) => {
   const n =[   
     {bodyPart: 'back', equipment: 'cable', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/Sh6IYw90gxaURZ', id: '0007', name: 'alternate lateral pulldown'} ,
      
@@ -65,17 +65,259 @@ const Exercices = ( {exercices , setExercices ,search,width ,first , end , setFi
      
     {bodyPart: 'upper arms', equipment: 'barbell', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/I9zaJmx6589kn5', id: '1720', name: 'barbell lying back of the head tricep extension'} ,
      
-    {bodyPart: 'back', equipment: 'barbell', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/dVPvhYCgeL4mpd', id: '0064', name: 'barbell one arm bent over row'} 
+    {bodyPart: 'back', equipment: 'barbell', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/dVPvhYCgeL4mpd', id: '0064', name: 'barbell one arm bent over row'},
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/xppod5cnoGwQbH', id: '0017', name: 'assisted pull-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/VaiDaPlPnpOorM', id: '1431', name: 'assisted standing chin-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/7Blg23WWqI6477', id: '1432', name: 'assisted standing pull-up'} ,
+     
+    {bodyPart: 'cardio', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/KZGNpFpzvxAPPk', id: '3672', name: 'back and forth step'} ,
+     
+    {bodyPart: 'back', equipment: 'stability ball', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/8m3EBcRdllId3C', id: '1314', name: 'back extension on exercise ball'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/s78E2x755VOFKj', id: '3297', name: 'back lever'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/A1NZLQ3Pob-MWJ', id: '1405', name: 'back pec stretch'} ,
+     
+    {bodyPart: 'upper legs', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/9rDOTcIHIOuoRx', id: '1473', name: 'backward jump'} ,
+     
+    {bodyPart: 'back', equipment: 'band', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/ps59xBq4BnVsCf', id: '0970', name: 'band assisted pull-up'} ,
+     
+    
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/xppod5cnoGwQbH', id: '0017', name: 'assisted pull-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/VaiDaPlPnpOorM', id: '1431', name: 'assisted standing chin-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/7Blg23WWqI6477', id: '1432', name: 'assisted standing pull-up'} ,
+     
+    {bodyPart: 'cardio', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/KZGNpFpzvxAPPk', id: '3672', name: 'back and forth step'} ,
+     
+    {bodyPart: 'back', equipment: 'stability ball', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/8m3EBcRdllId3C', id: '1314', name: 'back extension on exercise ball'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/s78E2x755VOFKj', id: '3297', name: 'back lever'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/A1NZLQ3Pob-MWJ', id: '1405', name: 'back pec stretch'} ,
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/xppod5cnoGwQbH', id: '0017', name: 'assisted pull-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/VaiDaPlPnpOorM', id: '1431', name: 'assisted standing chin-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/7Blg23WWqI6477', id: '1432', name: 'assisted standing pull-up'} ,
+     
+    {bodyPart: 'cardio', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/KZGNpFpzvxAPPk', id: '3672', name: 'back and forth step'} ,
+     
+    {bodyPart: 'back', equipment: 'stability ball', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/8m3EBcRdllId3C', id: '1314', name: 'back extension on exercise ball'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/s78E2x755VOFKj', id: '3297', name: 'back lever'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/A1NZLQ3Pob-MWJ', id: '1405', name: 'back pec stretch'} ,
+     
+    {bodyPart: 'upper legs', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/9rDOTcIHIOuoRx', id: '1473', name: 'backward jump'} ,
+     
+    {bodyPart: 'back', equipment: 'band', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/ps59xBq4BnVsCf', id: '0970', name: 'band assisted pull-up'} ,
+     
+    
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/xppod5cnoGwQbH', id: '0017', name: 'assisted pull-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/VaiDaPlPnpOorM', id: '1431', name: 'assisted standing chin-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/7Blg23WWqI6477', id: '1432', name: 'assisted standing pull-up'} ,
+     
+    {bodyPart: 'cardio', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/KZGNpFpzvxAPPk', id: '3672', name: 'back and forth step'} ,
+     
+    {bodyPart: 'back', equipment: 'stability ball', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/8m3EBcRdllId3C', id: '1314', name: 'back extension on exercise ball'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/s78E2x755VOFKj', id: '3297', name: 'back lever'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/A1NZLQ3Pob-MWJ', id: '1405', name: 'back pec stretch'} ,
+     
+    {bodyPart: 'upper legs', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/9rDOTcIHIOuoRx', id: '1473', name: 'backward jump'} ,
+     
+    {bodyPart: 'back', equipment: 'band', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/ps59xBq4BnVsCf', id: '0970', name: 'band assisted pull-up'} ,
+     
+    
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/xppod5cnoGwQbH', id: '0017', name: 'assisted pull-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/VaiDaPlPnpOorM', id: '1431', name: 'assisted standing chin-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/7Blg23WWqI6477', id: '1432', name: 'assisted standing pull-up'} ,
+     
+    {bodyPart: 'cardio', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/KZGNpFpzvxAPPk', id: '3672', name: 'back and forth step'} ,
+     
+    {bodyPart: 'back', equipment: 'stability ball', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/8m3EBcRdllId3C', id: '1314', name: 'back extension on exercise ball'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/s78E2x755VOFKj', id: '3297', name: 'back lever'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/A1NZLQ3Pob-MWJ', id: '1405', name: 'back pec stretch'} ,
+     
+    {bodyPart: 'upper legs', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/9rDOTcIHIOuoRx', id: '1473', name: 'backward jump'} ,
+     
+    {bodyPart: 'back', equipment: 'band', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/ps59xBq4BnVsCf', id: '0970', name: 'band assisted pull-up'} ,
+     
+    
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/xppod5cnoGwQbH', id: '0017', name: 'assisted pull-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/VaiDaPlPnpOorM', id: '1431', name: 'assisted standing chin-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/7Blg23WWqI6477', id: '1432', name: 'assisted standing pull-up'} ,
+     
+    {bodyPart: 'cardio', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/KZGNpFpzvxAPPk', id: '3672', name: 'back and forth step'} ,
+     
+    {bodyPart: 'back', equipment: 'stability ball', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/8m3EBcRdllId3C', id: '1314', name: 'back extension on exercise ball'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/s78E2x755VOFKj', id: '3297', name: 'back lever'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/A1NZLQ3Pob-MWJ', id: '1405', name: 'back pec stretch'} ,
+     
+    {bodyPart: 'upper legs', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/9rDOTcIHIOuoRx', id: '1473', name: 'backward jump'} ,
+     
+    {bodyPart: 'back', equipment: 'band', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/ps59xBq4BnVsCf', id: '0970', name: 'band assisted pull-up'} ,
+     
+    
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/xppod5cnoGwQbH', id: '0017', name: 'assisted pull-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/VaiDaPlPnpOorM', id: '1431', name: 'assisted standing chin-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/7Blg23WWqI6477', id: '1432', name: 'assisted standing pull-up'} ,
+     
+    {bodyPart: 'cardio', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/KZGNpFpzvxAPPk', id: '3672', name: 'back and forth step'} ,
+     
+    {bodyPart: 'back', equipment: 'stability ball', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/8m3EBcRdllId3C', id: '1314', name: 'back extension on exercise ball'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/s78E2x755VOFKj', id: '3297', name: 'back lever'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/A1NZLQ3Pob-MWJ', id: '1405', name: 'back pec stretch'} ,
+     
+    {bodyPart: 'upper legs', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/9rDOTcIHIOuoRx', id: '1473', name: 'backward jump'} ,
+     
+    {bodyPart: 'back', equipment: 'band', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/ps59xBq4BnVsCf', id: '0970', name: 'band assisted pull-up'} ,
+     
+    
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/xppod5cnoGwQbH', id: '0017', name: 'assisted pull-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/VaiDaPlPnpOorM', id: '1431', name: 'assisted standing chin-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/7Blg23WWqI6477', id: '1432', name: 'assisted standing pull-up'} ,
+     
+    {bodyPart: 'cardio', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/KZGNpFpzvxAPPk', id: '3672', name: 'back and forth step'} ,
+     
+    {bodyPart: 'back', equipment: 'stability ball', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/8m3EBcRdllId3C', id: '1314', name: 'back extension on exercise ball'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/s78E2x755VOFKj', id: '3297', name: 'back lever'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/A1NZLQ3Pob-MWJ', id: '1405', name: 'back pec stretch'} ,
+     
+    {bodyPart: 'upper legs', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/9rDOTcIHIOuoRx', id: '1473', name: 'backward jump'} ,
+     
+    {bodyPart: 'back', equipment: 'band', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/ps59xBq4BnVsCf', id: '0970', name: 'band assisted pull-up'} ,
+     
+    
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/xppod5cnoGwQbH', id: '0017', name: 'assisted pull-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/VaiDaPlPnpOorM', id: '1431', name: 'assisted standing chin-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/7Blg23WWqI6477', id: '1432', name: 'assisted standing pull-up'} ,
+     
+    {bodyPart: 'cardio', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/KZGNpFpzvxAPPk', id: '3672', name: 'back and forth step'} ,
+     
+    {bodyPart: 'back', equipment: 'stability ball', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/8m3EBcRdllId3C', id: '1314', name: 'back extension on exercise ball'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/s78E2x755VOFKj', id: '3297', name: 'back lever'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/A1NZLQ3Pob-MWJ', id: '1405', name: 'back pec stretch'} ,
+     
+    {bodyPart: 'upper legs', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/9rDOTcIHIOuoRx', id: '1473', name: 'backward jump'} ,
+     
+    {bodyPart: 'back', equipment: 'band', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/ps59xBq4BnVsCf', id: '0970', name: 'band assisted pull-up'} ,
+     
+    
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/xppod5cnoGwQbH', id: '0017', name: 'assisted pull-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/VaiDaPlPnpOorM', id: '1431', name: 'assisted standing chin-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/7Blg23WWqI6477', id: '1432', name: 'assisted standing pull-up'} ,
+     
+    {bodyPart: 'cardio', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/KZGNpFpzvxAPPk', id: '3672', name: 'back and forth step'} ,
+     
+    {bodyPart: 'back', equipment: 'stability ball', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/8m3EBcRdllId3C', id: '1314', name: 'back extension on exercise ball'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/s78E2x755VOFKj', id: '3297', name: 'back lever'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/A1NZLQ3Pob-MWJ', id: '1405', name: 'back pec stretch'} ,
+     
+    {bodyPart: 'upper legs', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/9rDOTcIHIOuoRx', id: '1473', name: 'backward jump'} ,
+     
+    {bodyPart: 'back', equipment: 'band', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/ps59xBq4BnVsCf', id: '0970', name: 'band assisted pull-up'} ,
+     
+    
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/xppod5cnoGwQbH', id: '0017', name: 'assisted pull-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/VaiDaPlPnpOorM', id: '1431', name: 'assisted standing chin-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/7Blg23WWqI6477', id: '1432', name: 'assisted standing pull-up'} ,
+     
+    {bodyPart: 'cardio', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/KZGNpFpzvxAPPk', id: '3672', name: 'back and forth step'} ,
+     
+    {bodyPart: 'back', equipment: 'stability ball', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/8m3EBcRdllId3C', id: '1314', name: 'back extension on exercise ball'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/s78E2x755VOFKj', id: '3297', name: 'back lever'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/A1NZLQ3Pob-MWJ', id: '1405', name: 'back pec stretch'} ,
+     
+    {bodyPart: 'upper legs', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/9rDOTcIHIOuoRx', id: '1473', name: 'backward jump'} ,
+     
+    {bodyPart: 'back', equipment: 'band', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/ps59xBq4BnVsCf', id: '0970', name: 'band assisted pull-up'} ,
+     
+    
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/xppod5cnoGwQbH', id: '0017', name: 'assisted pull-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/VaiDaPlPnpOorM', id: '1431', name: 'assisted standing chin-up'} ,
+     
+    {bodyPart: 'back', equipment: 'leverage machine', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/7Blg23WWqI6477', id: '1432', name: 'assisted standing pull-up'} ,
+     
+    {bodyPart: 'cardio', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/KZGNpFpzvxAPPk', id: '3672', name: 'back and forth step'} ,
+     
+    {bodyPart: 'back', equipment: 'stability ball', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/8m3EBcRdllId3C', id: '1314', name: 'back extension on exercise ball'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/s78E2x755VOFKj', id: '3297', name: 'back lever'} ,
+     
+    {bodyPart: 'back', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/A1NZLQ3Pob-MWJ', id: '1405', name: 'back pec stretch'} ,
+     
+    {bodyPart: 'upper legs', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/9rDOTcIHIOuoRx', id: '1473', name: 'backward jump'} ,
+     
+    {bodyPart: 'back', equipment: 'band', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/ps59xBq4BnVsCf', id: '0970', name: 'band assisted pull-up'} ,
+     
+  
+     
+    {bodyPart: 'upper legs', equipment: 'body weight', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/9rDOTcIHIOuoRx', id: '1473', name: 'backward jump'} ,
+     
+    {bodyPart: 'back', equipment: 'band', gifUrl: 'https://edb-4rme8.ondigitalocean.app/image/ps59xBq4BnVsCf', id: '0970', name: 'band assisted pull-up'} ,
+     
+    
     
     ]
 
     const [active, setActive] = useState(1);
+    const [taille , setTaille] = useState(0);
+  
 
     const click = (index) => () => {
+      setClicked(true);
       setFirst(index);
       setEnd(index+9);
       setActive(index);
     }
+
+
+    
+  useEffect(() => {
+   if (exercices.length/9 < 10) {
+    setTaille((exercices.length/9))
+   }
+   else{
+    setTaille(10)
+   }
+  }, [exercices]);
  
   return (
     <div className='container-fluid'>
@@ -83,13 +325,25 @@ const Exercices = ( {exercices , setExercices ,search,width ,first , end , setFi
 {console.log('exercices : ',exercices)}
        
 <div className="exercices_results col-12 ms-">
-  <p className={width ? 'title5resize text-center mt-5': 'title6 text-center mt-5  d-flex ms-5 ' }>Showing Results</p>
+  <p className={width ? 'title5resize text-center ': 'title6 text-center mt-5  d-flex ms-5 ' }>Showing Results</p>
 </div>
 
 
-        {n.slice(first, end).map((exercice, index) => (
+{console.log('clicked', clicked)}
+  
+{(exercices.length === 0) && clicked ? 
+
+<div className="loading d-flex mt-5 justify-content-center mb-4">
+<div class="lds-roller"><div></div><div></div><div></div><div></div></div>
+</div>
+ 
+    : ''
+ }
+
+
+        {exercices.slice(first, end).map((exercice, index) => (
          
-            <Card   key={index} className="col-lg-3 col-md-3 col-12 mb-5 card_border  ms-5 mt-4">
+            <Card   key={index} className={width ? "col-lg-3 col-md-3 col-12 mb-5 card_border   ms-4 mt-4":"col-lg-3 col-md-3 col-12 mb-5 card_border  ms-5 mt-4"}>
             <Card.Img variant="top" src={exercice.gifUrl} className="img-fluid img_exercices justify-content-center mt-4"  />
               <Card.Body  className='mt-3'>
 
@@ -97,7 +351,7 @@ const Exercices = ( {exercices , setExercices ,search,width ,first , end , setFi
                 <button className=" btn_exercices1 text-center ms-2">{exercice.bodyPart}</button>
                 <button className='btn_exercices2 text-center ms-5'>{exercice.target}</button>
                 </div>
-                <Card.Text className="bodyPart_name text-center mt-4">{exercice.name}</Card.Text>
+                <Card.Text className="bodyPart_name text-center mt-4 ">{exercice.name}</Card.Text>
           
 
 
@@ -108,14 +362,19 @@ const Exercices = ( {exercices , setExercices ,search,width ,first , end , setFi
           
 ))}
 
-{(n.length>9) &&
-<Pagination className='d-flex justify-content-center mb-5 mt-2'>
+
+
+
+
+
+{(exercices.length>9) &&
+<Pagination className={width ?  '  d-flex ms-4  col-12  mb-5 mt-2':' d-flex justify-content-center col-12 mb-5 mt-2'}>
 {/* <Pagination.First />
 <Pagination.Prev />
 <Pagination.Item>{1}</Pagination.Item> */}
 
-{Array.from({ length: (n.length /9) }).map((_, index) => (
-  <Pagination.Item onClick={click(index+1)}  className={(active===index+1) ? 'active' :'none'} >
+{Array.from({ length: (taille) }).map((_, index) => (
+  <Pagination.Item onClick={click(index+1)}  className={(active===index+1) ? 'active  ' :'none  '} >
     {index + 1}
   </Pagination.Item>
 ))}

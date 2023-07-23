@@ -9,7 +9,7 @@ import badyPart_img from '../assets/icons/gym.png';
 import Carousel from 'react-bootstrap/Carousel';
 
 
-const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exercices,setExercices, width}) => {
+const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exercices,setExercices, width , clicked, setClicked}) => {
   // const [search, setSearch] = useState('');
   // const [bodyPartList, setBodyPartList] = useState([]);
   const [click, setClick] = useState(0);
@@ -24,6 +24,7 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
   const handlSearch = async() => {
     let url = 'https://exercisedb.p.rapidapi.com/exercises'
     if(search){ 
+    
 
         const exercicesData = await fetchData(url, exerciseOptions);
         const searchedExercices = exercicesData.filter(
@@ -53,13 +54,18 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
 
 
  
+
+  useEffect(() => {
+      handlSearch(); // Call the search function whenever the click or item states are updated
+   
+  }, [click, item]);
   
   const Click = (index,nb,bodyPart)=>{
-    
+    setClicked(true)
      setClick(index) 
      setItem(nb)
      setSearch(bodyPart)
-     handlSearch()
+   
 
   }
 
@@ -70,7 +76,7 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
     <div className="container-fluid mt-5">
       <div className="row  ">
         <div className="col-12">
-          <p className={width ? 'title5resize text-center mt-5': 'title5 text-center mt-5   ' }>Awesome Exercices You <br /> Should Know</p>
+          <p className={width ? 'title5resize text-center mt-5 mb-5': 'title5 text-center mt-5   ' }>Awesome Exercices You <br /> Should Know</p>
           <div className="input col-12  d-flex justify-content-center mb-5">
             <input type="text" placeholder='Search Exercices' className='input1 col-lg-8 col-md-8 col-7 p-2' onChange={(e)=>{setSearch(e.target.value.toLowerCase())}} />
             {/* {console.log(search)} */}
@@ -83,10 +89,10 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
           <div className="bodyPartList col-12 mt-5  mb-3  ">
        <div className="  col-12 ms-auto ">
  
-  <Carousel data-bs-theme="black" fade interval={time} >
+  <Carousel data-bs-theme="black" fade interval={time}  >
 
-      <Carousel.Item className='d-flex col-12 justify-content-center mb-5'   >
-        {bodyPartList.slice(0, 4).map((bodyPart, index) => (
+      <Carousel.Item className='d-flex col-12 justify-content-center mb-5 '   >
+        {bodyPartList.slice(0, 3).map((bodyPart, index) => (
           <Card className={(index===click) && (1===item) ?" clicked col-3 ms-2":" notclicked  col-3 ms-2"} key={index}    onClick={()=>Click(index,1,bodyPart)}>
           <Card.Img variant="top" src={badyPart_img} className="img-fluid img mt-3 mb-2"  />
             <Card.Body>
@@ -96,7 +102,7 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
         </Carousel.Item>
  
       <Carousel.Item className='d-flex col-12 justify-content-center mb-5'>
-      {bodyPartList.slice(4, 8).map((bodyPart, index) => (
+      {bodyPartList.slice(4, 7).map((bodyPart, index) => (
           <Card className={(index===click) && (2===item) ?" clicked col-3 ms-2":" notclicked  col-3 ms-2"} key={index}    onClick={()=>Click(index,2,bodyPart)}>
         <Card.Img variant="top" src={badyPart_img} className="img-fluid img mt-3 mb-2" />
         <Card.Body>

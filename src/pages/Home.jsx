@@ -8,11 +8,12 @@ import { useState } from 'react';
 
 const Home = () => {
   
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState('ALL');
   const [bodyPartList, setBodyPartList] = useState([]);
   const [exercices, setExercices] = useState([]);
   const [first, setFirst] = useState(1);
   const [end, setEnd] = useState(10);
+  const [clicked, setClicked] = useState(false);
   const [width, setWidth] = useState(false);
   useEffect(() => {console.log('From Home Exercices :',exercices)}, []);
   useEffect(() => {
@@ -27,8 +28,8 @@ const Home = () => {
   return (
   <div className="col-12">
     <HeroBanner />
-    <SearchExercices search={search} setSearch={setSearch} bodyPartList={bodyPartList} setBodyPartList={setBodyPartList} exercices={exercices} setExercices={setExercices} width={width} />
-    <Exercices exercices={exercices} setExercices={setExercices} search={search}  width={width} first={first} end={end} setFirst={setFirst} setEnd={setEnd}/>
+    <SearchExercices search={search} setSearch={setSearch} bodyPartList={bodyPartList} setBodyPartList={setBodyPartList} exercices={exercices} setExercices={setExercices} width={width}  clicked={clicked} setClicked={setClicked} />
+    <Exercices exercices={exercices} setExercices={setExercices} search={search}  width={width} first={first} end={end} setFirst={setFirst} setEnd={setEnd}  clicked={clicked} setClicked={setClicked} />
  
   </div>
   )
