@@ -4,6 +4,7 @@ import { useEffect,useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Pagination from 'react-bootstrap/Pagination';
 import '../styles/exercices.css'
+import {Link} from 'react-router-dom';  
 
 import img1 from '../assets/images/test.svg'
 const Exercices = ( {exercices , setExercices ,search,width ,first , end , setFirst , setEnd, clicked, setClicked} ) => {
@@ -59,8 +60,8 @@ const Exercices = ( {exercices , setExercices ,search,width ,first , end , setFi
            width <992 ? window.scrollTo({top:1300,behavior:'smooth'}): window.scrollTo({top:1250,behavior:'smooth'}),
            
            
-         
-            <Card   key={index} className={width ? " cards_item col-lg-3 col-md-3 col-11 mb-5 card_border   ms-4 mt-4":"cards_item col-lg-3 col-md-3 col-12 mb-5 card_border  ms-4 mt-4"}>
+              <Link className='link' className={width ? " cards_item col-lg-3 col-md-3 col-11 mb-5    ms-4 mt-4":"cards_item col-lg-3 col-md-3 col-12 mb-5 card_border  ms-4 mt-4"}  to={`/exercise/${exercice.id}`} >
+            <Card   key={index}  className='card_border' >
             <Card.Img variant="top" src={exercice.gifUrl} className="img-fluid img_exercices justify-content-center mt-4"  />
               <Card.Body  className='mt-3'>
 
@@ -74,9 +75,9 @@ const Exercices = ( {exercices , setExercices ,search,width ,first , end , setFi
 
               </Card.Body>
             </Card>
+          </Link>
   
 
-          
 ))}
  
 

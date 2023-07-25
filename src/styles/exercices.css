@@ -203,6 +203,12 @@
     height: 0px;
   }
     
+.cards_item{
+  text-decoration: none;
+}
     
-    
-    
+.link{
+  text-decoration: none;
+  color: #000;
+ 
+}
