@@ -2,7 +2,7 @@ import React from 'react'
 import '../bootstrap-5.1.3-dist/css/bootstrap.css';
 import { useEffect,useState } from 'react';
 import {useParams} from 'react-router-dom';
-import {exerciseOptions,fetchData} from '../utils/fetchData';
+import { exerciseOptions, fetchData, youtubeOptions } from '../utils/fetchData';
 import Detail from '../components/DetailExercice';
 import ExerciceVideos from '../components/ExerciceVideos';
 import SimilarExercices from '../components/SimilarExercices';
@@ -18,21 +18,24 @@ const ExerciceDetail = () => {
   useEffect(() => {
     const fechDtata = async () => {
       const exerciseDbUrl = 'https://exercisedb.p.rapidapi.com';
-      // const youtubeSearchUrl = 'https://youtube-search-and-download.p.rapidapi.com';
+      const youtubeSearchUrl = 'https://youtube-search-and-download.p.rapidapi.com';
 
       const exerciseDetailData = await fetchData(`${exerciseDbUrl}/exercises/exercise/${id}`, exerciseOptions);
       setExerciseDetail(exerciseDetailData);
 
       console.log('exercices detail data :',exerciseDetailData);
 
-      // const exerciseVideosData = await fetchData(`${youtubeSearchUrl}/search?query=${exerciseDetailData.name} exercise`, youtubeOptions);
-      // setExerciseVideos(exerciseVideosData.contents);
+      const exerciseVideosData = await fetchData(`${youtubeSearchUrl}/search?query=${exerciseDetailData.name} exercise`, youtubeOptions);
+      setExerciseVideos(exerciseVideosData.contents);
+      console.log('exercise videos data :',exerciseVideosData)
 
-      // const targetMuscleExercisesData = await fetchData(`${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`, exerciseOptions);
-      // setTargetMuscleExercises(targetMuscleExercisesData);
+      const targetMuscleExercisesData = await fetchData(`${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`, exerciseOptions);
+      setTargetMuscleExercises(targetMuscleExercisesData);
+      console.log('target muscle exercises data :',targetMuscleExercisesData);
 
-      // const equimentExercisesData = await fetchData(`${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`, exerciseOptions);
-      // setEquipmentExercises(equimentExercisesData);
+      const equimentExercisesData = await fetchData(`${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`, exerciseOptions);
+      setEquipmentExercises(equimentExercisesData);
+      console.log('equipment exercises data :',equimentExercisesData);
       
     }
 
@@ -47,8 +50,8 @@ fechDtata();
  <div className="col-12">
 
    <Detail   exerciseDetail={exerciseDetail}/>
-    {/* <ExerciceVideos/>
-   <SimilarExercices/> */}
+    <ExerciceVideos exerciseVideos={exerciseVideos} name={exerciseDetail.name} />
+   <SimilarExercices targetMuscleExercises={targetMuscleExercises} equipmentExercises={equipmentExercises}/>
 
 
  </div>

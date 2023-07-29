@@ -1,0 +1,30 @@
+.p1_vd{
+    font-size:35px;
+   color:"#000" !important;
+    font-weight: 700;
+    
+   
+    
+} 
+a{
+    text-decoration: none !important;
+    color: #000 !important;
+}
+.p2_vd{
+    font-size:26px;
+    font-weight: 600;
+    color:"#000" !important;
+    text-decoration: none !important;
+}
+.p3_vd{
+    font-size:14px;
+    font-weight: 600;
+    color:"#000" !important;
+    text-decoration: none !important;
+}
+.img_vd{
+    border-radius: 5px;
+ 
+    width: 100%;
+}
+ 

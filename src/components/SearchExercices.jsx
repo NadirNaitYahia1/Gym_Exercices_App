@@ -25,9 +25,11 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
     let url = 'https://exercisedb.p.rapidapi.com/exercises'
     // window.scrollTo({top:1800,behavior:'smooth'} );
     if(search){ 
+      console.log('search')
     
 
         const exercicesData = await fetchData(url, exerciseOptions);
+        console.log('exercicesData',exercicesData)
         const searchedExercices = exercicesData.filter(
           (exercice) => 
             exercice.name.toLowerCase().includes(search)
@@ -44,14 +46,14 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
 
 
   useEffect(() => {
-    const fetchExercisesData = async () => {
+   
       // const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
   
   
       setBodyPartList(['all',"back","cardio","chest","lower arms","lower legs","neck","shoulders","upper arms","upper legs","waist"]);
-    };
+ 
 
-    fetchExercisesData();
+   
   }, []);
 
 
@@ -59,6 +61,7 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
 
   useEffect(() => {
       handlSearch(); // Call the search function whenever the click or item states are updated
+      console.log('bikkkkkk');
    
   }, [click, item]);
   

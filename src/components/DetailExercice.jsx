@@ -26,15 +26,15 @@ const DetailExercice = ({exerciseDetail}) => {
   ];
   return (
     <div className="container-fluid">
-      <div className="row detail col-12 d-flex">
+      <div className="row detail col-12 d-flex flex-nowrap">
     
           <div className='col-lg-6 col-12 '>
         
-            <img variant="top" src={exerciseDetail.gifUrl} className="img-fluid giturl_detail ms-5  mt-5  align-items-center"  />
+            <img variant="top" src={exerciseDetail.gifUrl} className="img-fluid giturl_detail ms-5  mt-3  align-items-center"  />
  
    
           </div>
-          <div className="col-md-6 col-12 mt-5">
+          <div className="col-md-6 col-12 ">
             <p className='p-1_detailExercice '>{exerciseDetail.name}</p>
             <p className='p-2_detailExercice  '>Exercises keep you strong.{' '}           <span style={{ textTransform: 'capitalize' }}>{exerciseDetail.name}</span> bup is one
           of the best <br /> exercises to target your {exerciseDetail.target}. It will help you improve your{' '}
