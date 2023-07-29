@@ -20,9 +20,44 @@ const SimilarExercices = ({ targetMuscleExercises, equipmentExercises }) => {
       </div>
 
 
+
+
+
 ))}
+<div>
+
+
+<p className='p1_similar'> Similar <span style={{ color: '#FF2625', textTransform: 'capitalize' }}>Equipment</span> exercises</p>
+
+</div>
+
+{ equipmentExercises?.slice(0, 3)?.map((item, index) => (
+<div className="col-4 mt-3">
+   <img className='img_vd ms-3' src={item.gifUrl} />
+    <p className='p2_similar ms-4 mt-1'>{item.name}</p>
+    <p className='p2_similar ms-4 mt-1'>{item.target}</p>
+
+
+</div>
+
+
+
+
+
+))}
+
+
+  
+</div>
+
+
+
+
+
+
       </div>
-    </div>
+      
+    
   )
 }
 
