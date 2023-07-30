@@ -25,10 +25,10 @@ const DetailExercice = ({exerciseDetail}) => {
     },
   ];
   return (
-    <div className="container-fluid">
-      <div className="row detail col-12 d-flex flex-nowrap">
+    <div className="container-fluid mb-5">
+      <div className="row detail col-12 d-flex flex-nowrap mb-5">
     
-          <div className='col-lg-6 col-12 '>
+          <div className='col-lg-6 col-12 mb-5 '>
         
             <img variant="top" src={exerciseDetail.gifUrl} className="img-fluid giturl_detail ms-5  mt-3  align-items-center"  />
  
@@ -41,7 +41,7 @@ const DetailExercice = ({exerciseDetail}) => {
           <br /> mood and gain energy.</p>
 
         {extraDetail?.map((item)=>(
-          <div className="col-12 mt-3 d-flex  align-items-center" key={item.name}>
+          <div className="col-12 d-flex  align-items-center" key={item.name}>
             <button className='btn_detailExercice  align-items-center'>
               <img src={item.icon} alt="" className='img_detailExercice' />
             </button>

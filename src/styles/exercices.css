@@ -8,6 +8,12 @@
  
 
 }
+.Vds{
+  display: flex;
+  
+  justify-content: center;
+  /* border: 1px solid #000; */
+}
 .card_border{
     border-top: 4px solid #c11f1f !important;
 }
