@@ -23,16 +23,26 @@ const SimilarExercices = ({ targetMuscleExercises, equipmentExercises }) => {
               <p className='p2_similar ms-4 mt-1'>{item.name}</p>
               <p className='p2_similar ms-4 mt-1 mb-5'>{item.target}</p>
            </div>
+          
          
 
 
       </div>
-
-
-
-
-
 ))}
+
+    <div className="down1 col-12 d-flex">
+    <button class="button_down">
+ <p class="text">ꜜ</p>
+</button>
+    </div>
+
+
+
+
+
+
+
+
 <div>
 
 

@@ -13,4 +13,30 @@
 .img_vd{
     height: 90%;
     width: 70%;
-}
+} 
+.button_down {
+    font-size: 50px;
+ 
+    color: black;
+    width: 45px;
+    height: 45px;
+  
+    border: 1px solid rgb(245, 237, 240);
+    border-radius: 8px;
+    cursor: pointer;
+    animation: bounce_513 1s infinite;
+  }
+  
+  @keyframes bounce_513 {
+    0%,
+      100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+  
+    50% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+  

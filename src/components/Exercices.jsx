@@ -5,8 +5,9 @@ import Card from 'react-bootstrap/Card';
 import Pagination from 'react-bootstrap/Pagination';
 import '../styles/exercices.css'
 import {Link} from 'react-router-dom';  
-
+import Loader from './Loader';
 import img1 from '../assets/images/test.svg'
+ 
 const Exercices = ( {exercices , setExercices ,search,width ,first , end , setFirst , setEnd, clicked, setClicked} ) => {
 
 
@@ -47,12 +48,8 @@ const Exercices = ( {exercices , setExercices ,search,width ,first , end , setFi
 {(exercices.length === 0) && clicked ? 
 
  
-<div className="loading d-flex mt-5 justify-content-center mb-4">
-<div class="lds-roller"><div></div><div></div><div></div><div></div></div>
-
-</div>
- 
-    : ''
+<Loader /> 
+    : null
  }
 
 
