@@ -1,6 +1,7 @@
 import React from 'react'
 import '../styles/similarExercices.css'
 import '../bootstrap-5.1.3-dist/css/bootstrap.css';
+import Loader from './Loader';
 const SimilarExercices = ({ targetMuscleExercises, equipmentExercises }) => {
   return (
     <div className='container-fluid'>
@@ -11,6 +12,8 @@ const SimilarExercices = ({ targetMuscleExercises, equipmentExercises }) => {
 
         </div>
 
+
+        {targetMuscleExercises?.length === 0 ? <Loader /> : null}
     {targetMuscleExercises?.slice(0, 3)?.map((item, index) => (
       <div className="col-md-4 col-12 mt-3 justify-content-center">
            <div>
@@ -37,6 +40,8 @@ const SimilarExercices = ({ targetMuscleExercises, equipmentExercises }) => {
 
 </div>
 
+
+{ equipmentExercises?.length === 0 ? <Loader /> : null}
 { equipmentExercises?.slice(0, 3)?.map((item, index) => (
 <div className="col-md-4 col-12 mt-3 mb-5">
    <img className='img_vd ms-3' src={item.gifUrl} />

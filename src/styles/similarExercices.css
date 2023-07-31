@@ -5,9 +5,10 @@
 }
 
 .p2_similar{
-    font-size: 20px;
-    font-weight: 500;
-    color: #000;
+     font-size:21px;
+    font-weight: 600;
+    color:"#000" !important;
+    text-decoration: none !important;
 }
 .img_vd{
     height: 90%;
