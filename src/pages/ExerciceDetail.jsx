@@ -6,6 +6,8 @@ import { exerciseOptions, fetchData, youtubeOptions } from '../utils/fetchData';
 import Detail from '../components/DetailExercice';
 import ExerciceVideos from '../components/ExerciceVideos';
 import SimilarExercices from '../components/SimilarExercices';
+import About from '../components/About';
+import Loader from '../components/Loader';
 
 
 const ExerciceDetail = () => {
@@ -14,6 +16,7 @@ const ExerciceDetail = () => {
   const [exerciseVideos, setExerciseVideos] = useState([]);
   const [targetMuscleExercises, setTargetMuscleExercises] = useState([]);
   const [equipmentExercises, setEquipmentExercises] = useState([]);
+  const [width, setWidth] = useState(window.innerWidth);
   
   useEffect(() => {
     const fechDtata = async () => {
@@ -43,18 +46,35 @@ fechDtata();
 
   }, [id]);
   
-  
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   
   
   return (
- <div className="col-12">
-
-   <Detail   exerciseDetail={exerciseDetail}/>
-    <ExerciceVideos exerciseVideos={exerciseVideos} name={exerciseDetail.name} />
-   <SimilarExercices targetMuscleExercises={targetMuscleExercises} equipmentExercises={equipmentExercises}/>
+ <div className="container-fluid mt-4 ">
+ 
 
 
- </div>
+
+
+    <Detail   exerciseDetail={exerciseDetail} />
+    <ExerciceVideos exerciseVideos={exerciseVideos} name={exerciseDetail.name} width={width}/>
+     <SimilarExercices targetMuscleExercises={targetMuscleExercises} equipmentExercises={equipmentExercises}/>
+  
+    {targetMuscleExercises.length ===0 ? <Loader /> :<About />} 
+</div>
+
+
+ 
     
   
  

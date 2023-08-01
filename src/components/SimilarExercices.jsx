@@ -30,17 +30,7 @@ const SimilarExercices = ({ targetMuscleExercises, equipmentExercises }) => {
       </div>
 ))}
 
-    <div className="down1 col-12 d-flex">
-    <button class="button_down">
- <p class="text">ꜜ</p>
-</button>
-    </div>
-
-
-
-
-
-
+ 
 
 
 <div>

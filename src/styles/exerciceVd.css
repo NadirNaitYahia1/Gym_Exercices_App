@@ -6,11 +6,10 @@
    
     
 } 
-.parag{
-    /* border: 1px solid #000; */
-    height: 100%;
-    width: 100%;
+.nadir{
+    border: 1px solid #000;
 }
+ 
 a{
     text-decoration: none !important;
     color: #000 !important;

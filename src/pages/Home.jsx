@@ -5,6 +5,7 @@ import HeroBanner from '../components/HeroBanner';
 import SearchExercices from '../components/SearchExercices';
 import Exercices from '../components/Exercices';
 import { useState } from 'react';
+import About from '../components/About';
 
 const Home = () => {
   
@@ -38,7 +39,7 @@ const Home = () => {
     <HeroBanner  width={width}/>
     <SearchExercices search={search} setSearch={setSearch} bodyPartList={bodyPartList} setBodyPartList={setBodyPartList} exercices={exercices} setExercices={setExercices} width={width}  clicked={clicked} setClicked={setClicked} />
     <Exercices exercices={exercices} setExercices={setExercices} search={search}  width={width} first={first} end={end} setFirst={setFirst} setEnd={setEnd}  clicked={clicked} setClicked={setClicked} />
- 
+    {/* <About />  */}
   </div>
   )
 }

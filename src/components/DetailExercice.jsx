@@ -5,9 +5,18 @@ import '../styles/detail.css'
 import BodyPartImage from '../assets/icons/body-part.png';
 import TargetImage from '../assets/icons/target.png';
 import EquipmentImage from '../assets/icons/equipment.png'; 
+import { useEffect } from 'react';
 
 
 const DetailExercice = ({exerciseDetail}) => {
+
+ useEffect(() => {
+  window.scrollTo(0, 0)
+ }, []);
+
+
+
+
   const { bodyPart, gifUrl, name, target, equipment } = exerciseDetail;
 
   const extraDetail = [
