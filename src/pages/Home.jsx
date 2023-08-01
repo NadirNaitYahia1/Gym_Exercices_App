@@ -7,7 +7,7 @@ import Exercices from '../components/Exercices';
 import { useState } from 'react';
 import About from '../components/About';
 
-const Home = () => {
+const Home = ({exercicesNav,setExercicesNav}) => {
   
   const [search, setSearch] = useState('ALL');
   const [bodyPartList, setBodyPartList] = useState([]);
@@ -16,6 +16,7 @@ const Home = () => {
   const [end, setEnd] = useState(10);
   const [clicked, setClicked] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -37,7 +38,7 @@ const Home = () => {
   return (
   <div className="col-12">
     <HeroBanner  width={width}/>
-    <SearchExercices search={search} setSearch={setSearch} bodyPartList={bodyPartList} setBodyPartList={setBodyPartList} exercices={exercices} setExercices={setExercices} width={width}  clicked={clicked} setClicked={setClicked} />
+    <SearchExercices search={search} setSearch={setSearch} bodyPartList={bodyPartList} setBodyPartList={setBodyPartList} exercices={exercices} setExercices={setExercices} width={width}  clicked={clicked} setClicked={setClicked} setExercicesNav={setExercicesNav} exercicesNav={exercicesNav}  />
     <Exercices exercices={exercices} setExercices={setExercices} search={search}  width={width} first={first} end={end} setFirst={setFirst} setEnd={setEnd}  clicked={clicked} setClicked={setClicked} />
     {/* <About />  */}
   </div>

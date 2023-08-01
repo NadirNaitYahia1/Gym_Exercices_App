@@ -9,19 +9,17 @@ import badyPart_img from '../assets/icons/gym.png';
 import Carousel from 'react-bootstrap/Carousel';
 
 
-const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exercices,setExercices, width , clicked, setClicked}) => {
+const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exercices,setExercices, width , clicked, setClicked,exercicesNav,setExercicesNav}) => {
   // const [search, setSearch] = useState('');
   // const [bodyPartList, setBodyPartList] = useState([]);
   const [click, setClick] = useState(0);
   const [item, setItem] = useState(-1);
  const time = 100000000000000000000;
-
-
-
-
-
-
-  const handlSearch = async() => {
+ 
+ 
+ 
+ 
+ const handlSearch = async() => {
     let url = 'https://exercisedb.p.rapidapi.com/exercises'
     // window.scrollTo({top:1800,behavior:'smooth'} );
     if(search){ 
@@ -42,9 +40,18 @@ const SearchExercices = ({search ,setSearch ,bodyPartList,setBodyPartList,exerci
           console.log('From SearchExercices Exercices :',exercices);
           setSearch('');
           // window.scrollTo({top:20,behavior:'smooth'} );
-  }}
-
-
+        }}
+        
+        
+        useEffect(() => {
+          if (exercicesNav === true) {
+            setClicked(true)
+            setClick(0) 
+            setItem(1)
+            setSearch('all')
+          }
+        }, [exercicesNav]);
+        
   useEffect(() => {
    
       // const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);

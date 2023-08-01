@@ -4,7 +4,7 @@ import '../styles/navbar.css'
 import logo from '../assets/images/Logo.png'
 import { Link } from 'react-router-dom';
 import { useState,useEffect } from 'react';
-const Navbar = () => {
+const Navbar = ({exercicesNav,setExercicesNav}) => {
     const [active, setActive] = useState([false, false]);
     const [items, setItems] = useState(0);
   
@@ -14,6 +14,8 @@ const Navbar = () => {
       }
       if (items === 1) {
         setActive([false, true]);
+        setExercicesNav(true);
+ 
       }
     }, [items]);
   
@@ -28,7 +30,7 @@ const Navbar = () => {
             </div>
             <div className="titre align-items-center d-flex">
                 <Link to="/" className={active[0] ? "home text-decoration-none ms-5 me-4  " : "  text-decoration-none ms-5 me-4  "  } onClick={()=> setItems(0)} >Home</Link>
-                <Link to="/exercices" className={active[1] ? " home text-decoration-none": "  text-decoration-none"} onClick={()=>setItems(1)}>Exercices</Link>
+                <Link to="/" className={active[1] ? " home text-decoration-none": "  text-decoration-none"} onClick={()=>setItems(1)}>Exercices</Link>
 
             </div>
 
