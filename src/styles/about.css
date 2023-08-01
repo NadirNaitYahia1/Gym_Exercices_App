@@ -1,5 +1,7 @@
 .container-fluid.about * {
-background-color: rgb(158, 158, 105) !important;
+/* background-color: rgb(158, 158, 105) !important; */
+background-color: rgb(200, 163, 163) !important;
+
 border-radius: 60%;
 margin: 0%;
 padding: 0%;
